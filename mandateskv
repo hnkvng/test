@@ -1,0 +1,5 @@
+MDFloatingActionButtonSpeedDial:
+    id: parentMethod
+    data: root.data
+    root_button_anim: True
+    label_text_color: "black"

@@ -1,0 +1,24 @@
+<Medicien>:
+    MDScrollView:
+        size: root.width, root.height
+        MDList:    
+            ThreeLineAvatarListItem:
+                text: 'Thuốc A'
+                secondary_text: 'Mô tả thuốc A'
+                tertiary_text: 'NSX: ?? - HSD: ??' 
+                ImageLeftWidget:
+                    source: "../img/medicine.jpg"
+                
+            ThreeLineAvatarListItem:
+                text: 'Thuốc B'
+                secondary_text: 'Mô tả thuốc B' 
+                tertiary_text: 'NSX: ?? - HSD: ??'
+                ImageLeftWidget:
+                    source: "../img/medicine.jpg"
+    Mandates:
+<Mandates>:
+    MDFloatingActionButtonSpeedDial:
+        id: parentMethod
+        data: root.data
+        root_button_anim: True
+        label_text_color: "black"
