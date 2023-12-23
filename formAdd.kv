@@ -1,0 +1,152 @@
+#formadd.kv
+
+<FormInput>:
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        MDTopAppBar:
+            title:'Thêm sản phẩm'
+            left_action_items: [['arrow-left',lambda back: app.comeBack('main') ]]
+
+        FloatLayout:
+            MDCard:
+                orientation: "vertical"
+                size_hint: None, None
+                size: root.width - 50, root.height - 300
+                pos_hint: {"center_x": .5, "center_y": .2}
+                ScrollView:
+                    MDList:
+                        spacing: '10dp'
+                        padding: '10dp'
+                        MDTextField:
+                            hint_text: 'Mã sản phẩm'
+                            input_type: 'text'
+                            max_text_length: 50
+                            color_mode: 'primary'
+                            helper_text: root.message['MSSP']
+                            helper_text_mode: "persistent"
+                            error: root.error['MSSP']
+                            on_text: root.hanleChange(self,'MSSP', self.text)
+                            on_focus: root.handleFocus('MSSP', self.focus)
+                        
+                        MDTextField:
+                            hint_text: 'Tên sản phẩm'
+                            max_text_length: 50
+                            color_mode: 'primary' 
+                            input_type: 'text'
+                            helper_text: root.message['Name']
+                            error: root.error['Name']
+                            helper_text_mode: "persistent"
+                            on_text: root.hanleChange(self,'Name', self.text)
+                            on_focus: root.handleFocus('Name', self.focus)
+
+                        MDTextField:
+                            hint_text: 'Mô tả sản phẩm - Nếu có'
+                            max_text_length: 1000
+                            input_type: 'text'
+                            color_mode: 'primary' 
+                            helper_text: root.message['Des']
+                            multiline: True
+                            helper_text_mode: "persistent"
+                            on_text: root.hanleChange(self,'Des', self.text)
+                            on_focus: root.handleFocus('Des', self.focus)
+
+                        MDTextField:
+                            hint_text: 'Số lượng mua sản phẩm'
+                            max_text_length: 50
+                            input_type: 'number'
+                            color_mode: 'primary' 
+                            helper_text: root.message['Quantity']
+                            error: root.error['Quantity']
+                            helper_text_mode: "persistent"
+                            on_text: root.hanleChange(self,'Quantity', self.text)
+                            on_focus: root.handleFocus('Quantity', self.focus)
+                        
+                        MDTextField:
+                            hint_text: 'Đơn vị tính'
+                            input_type: 'text'
+                            max_text_length: 50
+                            color_mode: 'primary' 
+                            helper_text: root.message['DVT']
+                            error: root.error['DVT']
+                            helper_text_mode: "persistent"
+                            on_text: root.hanleChange(self,'DVT', self.text)
+                            on_focus: root.handleFocus('DVT', self.focus)
+
+                        MDTextField:
+                            hint_text: 'Giá sản phẩm - Giá mua'
+                            input_type: 'number'
+                            max_text_length: 50
+                            color_mode: 'primary' 
+                            helper_text: root.message['Buy']
+                            error: root.error['Buy']
+                            helper_text_mode: "persistent"
+                            on_text: root.hanleChange(self,'Buy', self.text)
+                            on_focus: root.handleFocus('Buy', self.focus)
+
+                        MDTextField:
+                            hint_text: 'Giá Sản Phẩm - Giá bán'
+                            input_type: 'number'
+                            max_text_length: 50
+                            color_mode: 'primary'    
+                            helper_text: root.message['Sell']
+                            error: root.error['Sell']
+                            helper_text_mode: "persistent"
+                            on_text: root.hanleChange(self,'Sell', self.text)
+                            on_focus: root.handleFocus('Sell', self.focus)
+                        NSXTextFieldRound:
+                            id: NSX
+                            size_hint_y: None
+                            height: ProductNSX.height
+                            MDTextField:
+                                id: ProductNSX
+                                input_type: 'text'
+                                hint_text: 'Ngày sản xuất'
+                                max_text_length: 10
+                                color_mode: 'primary' 
+                                helper_text: root.message['NSX']
+                                error: root.error['NSX']
+                                helper_text_mode: "persistent"
+                                on_text: root.hanleChange(self,'NSX', self.text)
+                                on_focus: root.handleFocus('NSX', self.focus)
+                
+                            MDIconButton:
+                                icon: "calendar-range"
+                                pos_hint: {"center_y": .5}
+                                pos: ProductNSX.width - self.width + dp(8), 0
+                                theme_text_color: "Hint"
+                                on_release: root.ids.NSX.ShowDateSelect()
+
+                        HSDTextFieldRound:   
+                            id: HSD                           
+                            size_hint_y: None
+                            height: ProductHSD.height
+
+                            MDTextField:
+                                id: ProductHSD
+                                input_type: 'text'
+                                hint_text: 'Hạn sử dụng'
+                                max_text_length: 10
+                                color_mode: 'primary' 
+                                helper_text: root.message['HSD']
+                                error: root.error['HSD']
+                                helper_text_mode: "persistent"
+                                on_text: root.hanleChange(self,'HSD', self.text)
+                                on_focus: root.handleFocus('HSD', self.focus)
+                            MDIconButton:
+                                icon: "calendar-range"
+                                pos_hint: {"center_y": .5}
+                                pos: ProductHSD.width - self.width + dp(8), 0
+                                theme_text_color: "Hint"
+                                on_release: root.ids.HSD.ShowDateSelect()
+        FloatLayout:
+            MDRaisedButton:
+                pos_hint: {'center_x': 0.65, 'center_y': 0.3}
+                text: 'Lưu'
+                on_release: root.handleSubmit()
+
+            MDRaisedButton:
+                pos_hint: {'center_x': 0.35, 'center_y': 0.3}
+                text: 'Dọn'
+                on_release: print("Dọn")
