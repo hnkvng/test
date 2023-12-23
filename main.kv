@@ -1,0 +1,57 @@
+# main.kv
+
+<Main>:
+    on_enter: root.ids.medicine.getDataFromDataBase()
+    BoxLayout:
+        size: root.width, root.height
+        orientation: 'vertical'
+        MDTopAppBar:
+            title:'Trang chính'
+            right_action_items: [['magnify',lambda x: x],["dots-vertical", lambda x: x]]  
+            left_action_items: [["menu", lambda x: x]]
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: 'screen 1'
+                text: 'Trang chủ'
+                icon: 'home'
+                MDLabel:
+                    text: 'Trang chủ'
+                    halign: 'center'
+
+            MDBottomNavigationItem:
+                name: 'screen 2'
+                icon: 'pill-multiple'
+                text: 'Thuốc'
+                on_pre_enter: root.ids.medicine.getDataFromDataBase()
+                size: root.width, root.height
+                Medicien:
+                    id: medicine 
+                    MDList:
+                Mandates:
+                    size: self.size
+
+            MDBottomNavigationItem:
+                name: 'screen 3'
+                text: 'Lịch sử'
+                icon: 'history'
+
+                MDLabel:
+                    text: 'Lịch sử'
+                    halign: 'center'
+
+            MDBottomNavigationItem:
+                font_name: "Roboto"
+                name: 'screen 4'
+                text: 'Tôi'
+                icon: 'account-circle'
+
+                MDLabel:
+                    text: 'Tôi'
+                    halign: 'center'
+
+<Mandates>:
+    MDFloatingActionButtonSpeedDial:
+        id: parentMethod
+        data: root.data
+        root_button_anim: True
+        label_text_color: "black"
