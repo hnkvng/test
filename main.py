@@ -13,7 +13,7 @@ import re
 from tinydb import Query, TinyDB
 from datetime import datetime
 
-DATA = "../db/database.json"
+DATA = "database.json"
 #init database
 class initDataBase():
     def connect(self):
