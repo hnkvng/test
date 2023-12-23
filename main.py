@@ -206,7 +206,7 @@ class Medicien(ScrollView):
         for item in data:
             try:
                 list_item = OneLineAvatarListItem(text=item['Name'])
-                list_item.add_widget(ImageLeftWidget(source='../img/medicine.jpg'))
+                list_item.add_widget(ImageLeftWidget(source='medicine.jpg'))
                 md_list.add_widget(list_item)
             except:
                 print("error")
@@ -276,7 +276,7 @@ class MyApp(MDApp):
     sm = ScreenManager()
     def build(self):
         self.title = "Manager Medicine"
-        self.icon = "../img/doctor.jpg"
+        self.icon = "doctor.jpg"
         self.sm.add_widget(Main(name='main'))
         self.sm.add_widget(FormInput(name='forminput'))
         return self.sm
